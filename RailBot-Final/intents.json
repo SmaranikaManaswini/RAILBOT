@@ -1,0 +1,203 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hello",
+                "Hey",
+                "Good morning",
+                "Good evening"
+            ],
+            "responses": [
+                "Hello! How can I assist you today?",
+                "Hi there! What can I do for you?",
+                "Hey! Need any help?",
+                "Greetings! How may I help you?",
+                "Hello! How's your day going?"
+            ]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": [
+                "Bye",
+                "Goodbye",
+                "See you later",
+                "Farewell"
+            ],
+            "responses": [
+                "Goodbye! Have a great day!",
+                "See you later! Take care!",
+                "Farewell! Stay safe!",
+                "Bye! Looking forward to our next chat!",
+                "Goodbye! Don't hesitate to reach out again!"
+            ]
+        },
+        {
+            "tag": "thanks",
+            "patterns": [
+                "Thanks",
+                "Thank you",
+                "That's helpful",
+                "Thanks a lot"
+            ],
+            "responses": [
+                "You're welcome!",
+                "Happy to help!",
+                "Anytime!",
+                "Glad I could assist!",
+                "No problem! Always here to help!"
+            ]
+        },
+        {
+            "tag": "q1",
+            "patterns": [
+                "What kind of complaints can I submit?",
+                "What complaints can I lodge?",
+                "What complaints can I report?"
+            ],
+            "responses": [
+                "Any complaint relating only to 'Train' or 'Station' can be lodged.",
+                "You can submit complaints regarding 'Train' or 'Station' issues.",
+                "We accept complaints concerning only 'Train' or 'Station' related problems.",
+                "Feel free to lodge complaints about 'Train' or 'Station' issues.",
+                "Complaints related to 'Train' or 'Station' are welcomed."
+            ]
+        },
+        {
+            "tag": "q2",
+            "patterns": [
+                "Within what time frame will my complaint be resolved?",
+                "How long does it take to resolve a complaint?",
+                "When will my complaint be resolved?"
+            ],
+            "responses": [
+                "We will make all sincere efforts to resolve your complaints at the earliest and also inform you the same.",
+                "Your complaint will be resolved as quickly as possible, and we will keep you informed.",
+                "We strive to resolve complaints promptly and notify you once it's done.",
+                "Resolving your complaint is a priority, and you'll be informed once it's handled.",
+                "We aim to address complaints swiftly and will update you as soon as it's resolved."
+            ]
+        },
+        {
+            "tag": "q3",
+            "patterns": [
+                "Where can I track the complaint already submitted by me?",
+                "How do I track my complaint?",
+                "Where do I find the status of my complaint?"
+            ],
+            "responses": [
+                "You can track the live status of your complaint by clicking on 'TRACK YOUR CONCERN' after logging into the portal.",
+                "To track your complaint, log into the portal and click 'TRACK YOUR CONCERN'.",
+                "Complaint status can be tracked by selecting 'TRACK YOUR CONCERN' after logging in.",
+                "Simply log into the portal and click 'TRACK YOUR CONCERN' to see the status.",
+                "Check the live status of your complaint by using the 'TRACK YOUR CONCERN' option post-login."
+            ]
+        },
+        {
+            "tag": "q4",
+            "patterns": [
+                "Is there a provision for tracking the same complaint on cross-platforms?",
+                "Can I track my complaint on different platforms?",
+                "Is cross-platform tracking available?"
+            ],
+            "responses": [
+                "Yes, you can track your complaint on multiple platforms if lodged on WEB or APP.",
+                "Complaints lodged on WEB or APP can be tracked across platforms, while SMS and helpline complaints are restricted.",
+                "Cross-platform tracking is available for WEB and APP complaints but not for SMS or helpline ones.",
+                "You can track complaints across platforms if they were lodged on WEB or APP.",
+                "Cross-platform complaint tracking is supported for WEB and APP, but not for SMS or helpline complaints."
+            ]
+        },
+        {
+            "tag": "q5",
+            "patterns": [
+                "Is there a provision to lodge complaints over the phone?",
+                "Can I file a complaint by calling?",
+                "Is phone support available for complaints?"
+            ],
+            "responses": [
+                "Yes, a complaint can be lodged over the phone on the integrated helpline number 139.",
+                "You can lodge complaints by calling the helpline at 139.",
+                "Phone support is available for lodging complaints; just dial 139.",
+                "Complaints can be filed over the phone by contacting the 139 helpline.",
+                "Feel free to lodge your complaint by calling the helpline at 139."
+            ]
+        },
+        {
+            "tag": "q6",
+            "patterns": [
+                "Is there any provision to reopen a complaint if the resolution is unsatisfactory?",
+                "Can I reopen a complaint if I am not satisfied?",
+                "What if I am unhappy with the resolution?"
+            ],
+            "responses": [
+                "No, there is no such provision to reopen a complaint.",
+                "Unfortunately, complaints cannot be reopened once resolved.",
+                "There is no option to reopen a complaint after it has been resolved.",
+                "Complaints cannot be reopened after resolution, as there is no such provision.",
+                "Once a complaint is resolved, it cannot be reopened under the current system."
+            ]
+        },
+        {
+            "tag": "q7",
+            "patterns": [
+                "Is there a provision to lodge complaints through SMS?",
+                "Can I file a complaint via SMS?",
+                "Is SMS complaint lodging available?"
+            ],
+            "responses": [
+                "Yes, you may write a message 'MADAD <space> your complaint' and SMS it to 139.",
+                "You can lodge a complaint by sending an SMS with 'MADAD <space> your complaint' to 139.",
+                "Complaint lodging via SMS is available; just text 'MADAD <space> your complaint' to 139.",
+                "Feel free to lodge complaints through SMS by sending 'MADAD <space> your complaint' to 139.",
+                "SMS complaint lodging is supported; send 'MADAD <space> your complaint' to 139."
+            ]
+        },
+        {
+            "tag": "q8",
+            "patterns": [
+                "Is there a provision to track a complaint with a reference number?",
+                "Can I track my complaint with a reference number?",
+                "How do I track using a reference number?"
+            ],
+            "responses": [
+                "Yes, tracking with a reference number is possible.",
+                "You can track your complaint using the reference number.",
+                "Tracking your complaint with the reference number is supported.",
+                "Yes, complaints can be tracked using the provided reference number.",
+                "The reference number allows you to track your complaint status."
+            ]
+        },
+        {
+            "tag": "q9",
+            "patterns": [
+                "Is there a restriction on the entered PNR for Train Complaints?",
+                "Can I use any PNR for train complaints?",
+                "What are the PNR restrictions for complaints?"
+            ],
+            "responses": [
+                "Yes, you can only enter a PNR within 5 days after the boarding time.",
+                "PNRs must be entered within 5 days after the boarding time for complaints.",
+                "There is a restriction; PNRs can only be used within 5 days post-boarding.",
+                "You must enter a PNR within 5 days after boarding to file a train complaint.",
+                "The system only accepts PNRs entered within 5 days of the boarding time."
+            ]
+        },
+        {
+            "tag": "q10",
+            "patterns": [
+                "Is there a provision to change the contact details?",
+                "Can I update my contact details?",
+                "How do I change my contact information?"
+            ],
+            "responses": [
+                "Yes, you can update your contact details through the profile update link.",
+                "Contact details can be changed by accessing the profile update option.",
+                "You can update your contact information by using the provided profile link.",
+                "Feel free to update your contact details via the profile update feature.",
+                "Yes, updating contact information is possible through your profile settings."
+            ]
+        }
+    ]
+}

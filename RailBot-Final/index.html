@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RailBot</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d88080;
+      }
+      .mini:hover {
+        cursor: pointer;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        color: black;
+      }
+      .online_icon {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background-color: #4cd137;
+        border-radius: 50%;
+        bottom: 0.2em;
+        right: 0.4em;
+        border: 1.5px solid white;
+      }
+      .msg_time,
+      .msg_time_send {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 10px;
+      }
+      .msg_time_send {
+        position: absolute;
+        right: 0;
+        bottom: -15px;
+      }
+      .msg_time {
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mx-auto flex justify-center h-screen">
+      <div class="w-full max-w-md bg-red-800 rounded-lg flex flex-col h-full">
+        <!-- Header -->
+        <div class="bg-red-900 flex items-center p-4 rounded-t-lg relative">
+          <div class="relative h-16 w-16">
+            <img
+              src="navbar-logo.png"
+              class="rounded-circle text-white text-5xl"
+            />
+            <span class="online_icon"></span>
+          </div>
+          <div class="ml-4 text-white">
+            <h2 class="text-lg font-bold">RailBot</h2>
+            <p class="text-sm">Ask me anything!</p>
+          </div>
+          <a
+            href="https://rail-smart-madad.vercel.app/"
+            class="absolute bottom-4 right-4 bg-white text-red-700 px-4 py-2 rounded-lg shadow-md hover:bg-red-700 hover:text-white transition"
+            target="_blank"
+          >
+            Home Page
+          </a>
+        </div>
+        <!-- Body -->
+        <div id="messageFormeight" class="flex-1 overflow-auto p-4">
+          <div id="miniCardContainer" class="space-y-4">
+            <div
+              class="mini bg-red-400 text-white p-4 rounded-lg"
+              onclick="addPrompt('What complaints can I lodge?')"
+            >
+              <p>What complaints can I lodge?</p>
+            </div>
+            <div
+              class="mini bg-red-400 text-white p-4 rounded-lg"
+              onclick="addPrompt('When will my complaint be resolved?')"
+            >
+              <p>When will my complaint be resolved?</p>
+            </div>
+            <div
+              class="mini bg-red-400 text-white p-4 rounded-lg"
+              onclick="addPrompt('How do I track my complaint?')"
+            >
+              <p>How do I track my complaint?</p>
+            </div>
+            <div
+              class="mini bg-red-400 text-white p-4 rounded-lg"
+              onclick="addPrompt('Can I file a complaint by calling?')"
+            >
+              <p>Can I file a complaint by calling?</p>
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="bg-white p-4 rounded-b-lg">
+          <form id="messageArea" class="flex">
+            <input
+              type="text"
+              id="text"
+              name="msg"
+              placeholder="Type your message..."
+              autocomplete="off"
+              class="flex-1 border border-gray-300 p-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              oninput="toggleMiniCards()"
+            />
+            <button
+              type="submit"
+              id="send"
+              class="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600"
+            >
+              <i class="fas fa-location-arrow"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMiniCards() {
+        const message = $("#text").val();
+        if (message.length > 0) {
+          $("#miniCardContainer").hide();
+        } else {
+          $("#miniCardContainer").show();
+        }
+      }
+
+      function addPrompt(promptText) {
+        $("#text").val(promptText);
+        $("#miniCardContainer").hide();
+      }
+
+      function scrollToBottom() {
+        $("#messageFormeight").scrollTop(
+          $("#messageFormeight")[0].scrollHeight
+        );
+      }
+
+      $(document).ready(function () {
+        $("#messageArea").on("submit", function (event) {
+          event.preventDefault();
+          const date = new Date();
+          const hour = date.getHours();
+          const minute = date.getMinutes();
+          const str_time = hour + ":" + minute;
+          const rawText = $("#text").val();
+
+          const userHtml = `<div class="flex justify-end mb-4">
+            <div class="bg-gray-200 text-black p-3 rounded-lg relative">
+              ${rawText}
+              <span class="msg_time_send">${str_time}</span>
+            </div>
+            <i class="fas fa-user-circle text-white text-3xl ml-2"></i>
+          </div>`;
+
+          $("#text").val("");
+          $("#messageFormeight").append(userHtml);
+          scrollToBottom(); // Auto-scroll after adding the user's message
+
+          $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:5000/chat", // Ensure this matches your backend URL
+            contentType: "application/json",
+            data: JSON.stringify({ message: rawText }),
+            success: function (data) {
+              var botHtml =
+                '<div class="flex justify-start mb-4"><div class="relative h-10 w-10"><img src="navbar-logo.png" class="rounded-circle"></div><div class="bg-red-500 text-white p-3 rounded-lg relative ml-2">' +
+                data.response +
+                '<span class="msg_time">' +
+                str_time +
+                "</span></div></div>";
+              $("#messageFormeight").append(botHtml);
+              scrollToBottom(); // Auto-scroll after adding the bot's response
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.error("AJAX Error:", textStatus, errorThrown);
+              alert("An error occurred: " + textStatus);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
